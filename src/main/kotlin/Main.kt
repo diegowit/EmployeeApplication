@@ -3,7 +3,7 @@ import main.models.Employee
 
 
 
-
+fun main() = runMainMenu()
 /**
  * Runs the main menu loop.
  */
@@ -11,9 +11,9 @@ import main.models.Employee
 fun runMainMenu() {
     do {
         when (val option = mainMenu()) {
-            1 -> runEmployeeMenu()
-            2 -> runEmployeeSearch()
-            0 -> exitApp()
+            //1 -> runEmployeeMenu()
+           // 2 -> runEmployeeSearch()
+           // 0 -> exitApp()
             else -> println("Invalid menu choice: $option")
         }
     } while (true)
@@ -24,8 +24,32 @@ fun runMainMenu() {
  *  Main Menu
  *
  */
-fun mainMenu(args: Array<String>){
-    //start()
-    // logger.info { "Launching Employee App" }
-
+fun mainMenu(): Int {
+    print(
+        """
+    
+▐░▌       ▐░▌▐░░░░░░░░░░░▌▐░▌          ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░▌     ▐░░▌▐░░░░░░░░░░░▌
+▐░▌       ▐░▌▐░█▀▀▀▀▀▀▀▀▀ ▐░▌          ▐░█▀▀▀▀▀▀▀▀▀ ▐░█▀▀▀▀▀▀▀█░▌▐░▌░▌   ▐░▐░▌▐░█▀▀▀▀▀▀▀▀▀ 
+▐░▌       ▐░▌▐░▌          ▐░▌          ▐░▌          ▐░▌       ▐░▌▐░▌▐░▌ ▐░▌▐░▌▐░▌          
+▐░▌   ▄   ▐░▌▐░█▄▄▄▄▄▄▄▄▄ ▐░▌          ▐░▌          ▐░▌       ▐░▌▐░▌ ▐░▐░▌ ▐░▌▐░█▄▄▄▄▄▄▄▄▄ 
+▐░▌  ▐░▌  ▐░▌▐░░░░░░░░░░░▌▐░▌          ▐░▌          ▐░▌       ▐░▌▐░▌  ▐░▌  ▐░▌▐░░░░░░░░░░░▌
+▐░▌ ▐░▌░▌ ▐░▌▐░█▀▀▀▀▀▀▀▀▀ ▐░▌          ▐░▌          ▐░▌       ▐░▌▐░▌   ▀   ▐░▌▐░█▀▀▀▀▀▀▀▀▀ 
+▐░▌▐░▌ ▐░▌▐░▌▐░▌          ▐░▌          ▐░▌          ▐░▌       ▐░▌▐░▌       ▐░▌▐░▌          
+▐░▌░▌   ▐░▐░▌▐░█▄▄▄▄▄▄▄▄▄ ▐░█▄▄▄▄▄▄▄▄▄ ▐░█▄▄▄▄▄▄▄▄▄ ▐░█▄▄▄▄▄▄▄█░▌▐░▌       ▐░▌▐░█▄▄▄▄▄▄▄▄▄ 
+▐░░▌     ▐░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░▌       ▐░▌▐░░░░░░░░░░░▌
+ ▀▀       ▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀         ▀  ▀▀▀▀▀▀▀▀▀▀▀ 
+            
+╔═══════════════════════════════════════════════════╗
+║                 Employee APP                      ║
+╠═══════════════════════════════════════════════════╣
+║                                                   ║
+║                  1 Employee Menu                  ║
+║                  2 Search Employee Menu           ║
+╚═══════════════════════════════════════════════════╝
+║                  0    Exit                        ║
+╚═══════════════════════════════════════════════════╝
+==>> """.trimMargin()
+    )
+    return readLine()!!.toInt()
+    // Returning the user input as an integer.
 }
