@@ -71,8 +71,8 @@ fun runEmployeeMenu () {
     do {
         when (val option = employeeMenu()) {
             1 -> add()
-           // 2 -> list()
-           // 3 -> paySlip()
+            2 -> list()
+            3 -> paySlip()
             4 -> update()
           //  5 -> delete()
 
@@ -183,18 +183,51 @@ fun update(){
         // Prompt the user for the new cycle to work monthly deduction and update the employee instance.
         println("Enter the new cycle to work monthly deduction: ")
         employee.cycleToWorkMonthlyDeduction = readLine()!!.toDouble()
+
+        println("is a Manager (true/false): ")
+        employee.isManager = readLine()!!.toBoolean()
+
+val updatedEmployee = Employee( employee.firstName,
+    employee.surname, employee.gender,
+    employee.employeeID, employee.grossSalary,
+    employee.payePercentage, employee.prsiPercentage,
+    employee.annualBonus, employee.cycleToWorkMonthlyDeduction,
+    employee.isManager)
+
+if (employees.updateEmployee(employee.employeeID, updatedEmployee)){
+    println("Update Successful")
+}else {
+    println("Update Failed")
+}
+
+
+    } else {
+        println("There are no employee to update")
     }
 }
 
 
 
 
+// Function to print the payslip of an employee.
+fun paySlip(){
+    // Call the getEmployeeById() function to get the employee instance.
+    val employee = getEmployeeById()
+    // If the employee is found, print the payslip.
+    if (employee != null)
+        println(employee.getPayslip())
+}
 
 
 
 
-
-
+// Function to list all the employees.
+fun list(){
+    // Call the findAll() function from the EmployeeAPI class to get all the employees.
+    employees.findAll()
+        // Loop through each employee and print it.
+        .forEach{ println(it) }
+}
 
 
 
