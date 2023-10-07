@@ -2,6 +2,7 @@ package main
 import main.controllers.EmployeeAPI
 import main.models.Employee
 import kotlin.system.exitProcess
+import kotlin.math.round
 
 // Initialize the employee API instance
 var employees = EmployeeAPI()
@@ -170,3 +171,8 @@ fun exitApp() {
     )
     exitProcess(0)
 }
+
+//https://discuss.kotlinlang.org/t/how-do-you-round-a-number-to-n-decimal-places/8843
+//There are several options...try each of them out
+fun roundTwoDecimals(number: Double) = round(number * 100) / 100
+//fun roundTwoDecimals(number: Double) = "%.2f".format(number).toDouble()
