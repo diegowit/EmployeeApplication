@@ -1,8 +1,13 @@
 package main
+import main.controllers.EmployeeAPI
 import main.models.Employee
 import kotlin.system.exitProcess
 
+// Initialize the employee API instance
+var employees = EmployeeAPI()
 
+
+// Function to display the menu options and return the user input.
 fun main() = runMainMenu()
 /**
  * Runs the main menu loop.
