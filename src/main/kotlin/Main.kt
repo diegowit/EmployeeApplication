@@ -230,7 +230,11 @@ fun list(){
 }
 
 
-
+fun dummyData() {
+    employees.create(Employee("Yessi", "Paul", 'f', 0, 3625.43, 81.0, 8.0, 3000.0, 20.6, true))
+    employees.create(Employee("John", "Lopez", 'm', 0, 969955.13, 12.5, 6.5, 1200.0, 45.3, false))
+    employees.create(Employee("Laura", "Smith", 'f', 0, 457825.41, 10.0, 9.9, 6500.0, 0.0, true))
+}
 
 
 /**
