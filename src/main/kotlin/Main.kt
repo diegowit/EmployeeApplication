@@ -13,7 +13,7 @@ fun runMainMenu() {
         when (val option = mainMenu()) {
             1 -> runEmployeeMenu()
             2 -> runEmployeeSearch()
-            0 -> exitApp()
+            //0 -> exitApp()
             else -> println("Invalid menu choice: $option")
         }
     } while (true)
@@ -70,8 +70,7 @@ fun runEmployeeMenu () {
            // 4 -> update()
           //  5 -> delete()
 
-            //20 -> save()
-           // 21 -> load()
+
             0 -> return // Return to main menu
             else -> println("Invalid menu choice: $option")
         }
@@ -91,9 +90,53 @@ fun employeeMenu(): Int {
 ║   4) Update Employee details                      ║
 ║   5) Delete Employee                              ║
 ║                                                   ║
-╟───────────────────────────────────────────────────╢
-║   20) Save Contacts                               ║
-║   21) Load Contacts                               ║
+╚═══════════════════════════════════════════════════╝
+║   0) Return to Main Menu                          ║
+╚═══════════════════════════════════════════════════╝
+            
+            
+       ==>> """.trimMargin()
+    )
+    return readLine()!!.toInt()
+    // Returning the user input as an integer.
+}
+
+
+/**
+ *
+ *  Search Employee Menu
+ *
+ */
+fun runEmployeeSearch () {
+
+    do {
+        when (val option = searchMenu()) {
+            // 1 -> listByName()
+            // 2 ->  listBySurname()
+            // 3 ->  listByGender()
+            // 4 ->  listOfManagers()
+            // 5 -> sortBySurname()
+
+
+            0 -> return // Return to main menu
+            else -> println("Invalid menu choice: $option")
+        }
+    } while (true)
+}
+
+fun searchMenu(): Int {
+
+    print(
+        """
+╔═══════════════════════════════════════════════════╗
+║                   Employee Menu                   ║
+╠═══════════════════════════════════════════════════╣
+║   1) List Employee By Name                        ║
+║   2) List Employee By Surname                     ║
+║   3) list Employee by Gender                      ║
+║   4) list Managers                                ║
+║   5) Sort Employee By surname in ascending order  ║
+║                                                   ║
 ╚═══════════════════════════════════════════════════╝
 ║   0) Return to Main Menu                          ║
 ╚═══════════════════════════════════════════════════╝
