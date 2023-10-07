@@ -1,6 +1,6 @@
 package main
 import main.models.Employee
-
+import kotlin.system.exitProcess
 
 
 fun main() = runMainMenu()
@@ -13,7 +13,7 @@ fun runMainMenu() {
         when (val option = mainMenu()) {
             1 -> runEmployeeMenu()
             2 -> runEmployeeSearch()
-            //0 -> exitApp()
+            0 -> exitApp()
             else -> println("Invalid menu choice: $option")
         }
     } while (true)
@@ -44,7 +44,7 @@ fun mainMenu(): Int {
 ╠═══════════════════════════════════════════════════╣
 ║                                                   ║
 ║                  1 Employee Menu                  ║
-║                  2 Search Employee Menu           ║
+║                  2 Search  Employee Menu           ║
 ╚═══════════════════════════════════════════════════╝
 ║                  0    Exit                        ║
 ╚═══════════════════════════════════════════════════╝
@@ -146,4 +146,22 @@ fun searchMenu(): Int {
     )
     return readLine()!!.toInt()
     // Returning the user input as an integer.
+}
+
+
+fun exitApp() {
+    println(
+        "_______  _______  _______    __   __  _______  __   __    _______  _______  _______  __    _ \n" +
+                "|       ||       ||       |  |  | |  ||       ||  | |  |  |       ||       ||       ||  |  | |\n" +
+                "|  _____||    ___||    ___|  |  |_|  ||   _   ||  | |  |  |  _____||   _   ||   _   ||   |_| |\n" +
+                "| |_____ |   |___ |   |___   |       ||  | |  ||  |_|  |  | |_____ |  | |  ||  | |  ||       |\n" +
+                "|_____  ||    ___||    ___|  |_     _||  |_|  ||       |  |_____  ||  |_|  ||  |_|  ||  _    |\n" +
+                " _____| ||   |___ |   |___     |   |  |       ||       |   _____| ||       ||       || | |   |\n" +
+                "|_______||_______||_______|    |___|  |_______||_______|  |_______||_______||_______||_|  |__|\n" +
+                "                                                                                              \n" +
+                "\n" +
+                "      Thank you for using this App!\n" +
+                "Exiting... Have a great day!"
+    )
+    exitProcess(0)
 }
