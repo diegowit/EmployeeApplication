@@ -74,6 +74,8 @@ fun runEmployeeMenu () {
             2 -> list()
             3 -> paySlip()
             4 -> update()
+            5 -> delete()
+            80 -> dummyData()
           //  5 -> delete()
 
 
@@ -236,6 +238,21 @@ fun dummyData() {
     employees.create(Employee("Laura", "Smith", 'f', 0, 457825.41, 10.0, 9.9, 6500.0, 0.0, true))
 }
 
+fun delete() {
+    val employee = getEmployeeById()
+
+    if (employee != null) {
+        val deleted = employees.deleteEmployee(employee.employeeID)
+
+        if (deleted) {
+            println("deleted successfully")
+        } else {
+            println("Failed to delete")
+        }
+    } else {
+        println("Employee not found.")
+    }
+}
 
 /**
  *

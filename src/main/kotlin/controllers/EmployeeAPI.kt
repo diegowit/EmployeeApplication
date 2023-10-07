@@ -11,7 +11,7 @@ internal fun getId(): Int {
     return lastId++
 }
 
-class EmployeeAPI{
+class EmployeeAPI {
 
     // Collection to store employee instances.
     private val employees = ArrayList<Employee>()
@@ -36,22 +36,33 @@ class EmployeeAPI{
         employees.add(employee)
     }
 
-fun updateEmployee(id: Int, updatedEmployee: Employee): Boolean {
-    val foundEmployee = findOne(id)
+    fun updateEmployee(id: Int, updatedEmployee: Employee): Boolean {
+        val foundEmployee = findOne(id)
 
-    if ((foundEmployee != null) && (updatedEmployee != null)) {
-        foundEmployee.firstName = updatedEmployee.firstName
-        foundEmployee.surname = updatedEmployee.surname
-        foundEmployee.gender =  updatedEmployee.gender
-        foundEmployee.grossSalary = updatedEmployee.grossSalary
-        foundEmployee.payePercentage = updatedEmployee.payePercentage
-        foundEmployee.prsiPercentage = updatedEmployee.prsiPercentage
-        foundEmployee.annualBonus = updatedEmployee.annualBonus
-        foundEmployee.cycleToWorkMonthlyDeduction = updatedEmployee.cycleToWorkMonthlyDeduction
-        foundEmployee.isManager = updatedEmployee.isManager
+        if ((foundEmployee != null) && (updatedEmployee != null)) {
+            foundEmployee.firstName = updatedEmployee.firstName
+            foundEmployee.surname = updatedEmployee.surname
+            foundEmployee.gender = updatedEmployee.gender
+            foundEmployee.grossSalary = updatedEmployee.grossSalary
+            foundEmployee.payePercentage = updatedEmployee.payePercentage
+            foundEmployee.prsiPercentage = updatedEmployee.prsiPercentage
+            foundEmployee.annualBonus = updatedEmployee.annualBonus
+            foundEmployee.cycleToWorkMonthlyDeduction = updatedEmployee.cycleToWorkMonthlyDeduction
+            foundEmployee.isManager = updatedEmployee.isManager
             return true
 
+        }
+        return false
     }
-    return false
-}
+
+    fun deleteEmployee(id: Int): Boolean {
+        val findEmployee = findOne(id)
+
+        if (findEmployee != null) {
+           //using the .remove function
+            employees.remove(findEmployee)
+            return true
+        }
+        return false
+    }
 }
