@@ -12,3 +12,10 @@ class Employee {
                    var cycleToWorkMonthlyDeduction: Double,
                    var isManager: Boolean,)
 }
+
+fun getFullName() = when (gender) {
+    'm', 'M' -> "Mr. ${firstName} ${surname}"
+    'f', 'F' -> "Ms.  ${firstName} ${surname}"
+    else -> "${firstName} ${surname}"
+}
+

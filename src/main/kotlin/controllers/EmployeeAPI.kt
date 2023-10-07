@@ -15,4 +15,22 @@ class EmployeeAPI{
 
     // Collection to store employee instances.
     private val employees = ArrayList<Employee>()
+
+    // Method to retrieve all employees in the collection.
+    fun findAll(): List<Employee> {
+        // Return the entire employee collection.
+        return employees
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 }
