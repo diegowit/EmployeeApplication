@@ -22,15 +22,19 @@ class EmployeeAPI{
         return employees
     }
 
+    // Method to retrieve a single employee based on their ID.
+    fun findOne(id: Int): Employee? {
+        // Use the find function to search for an employee with the specified ID.
+        return employees.find { p -> p.employeeID == id }
+    }
 
-
-
-
-
-
-
-
-
+    // Method to add a new employee to the collection.
+    fun create(employee: Employee) {
+        // Assign a unique ID to the new employee.
+        employee.employeeID = getId()
+        // Add the new employee to the collection.
+        employees.add(employee)
+    }
 
 
 }

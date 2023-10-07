@@ -70,7 +70,7 @@ fun runEmployeeMenu () {
 
     do {
         when (val option = employeeMenu()) {
-          //  1 -> add()
+            1 -> add()
            // 2 -> list()
            // 3 -> paySlip()
            // 4 -> update()
@@ -108,6 +108,46 @@ fun employeeMenu(): Int {
 }
 
 
+fun add(){
+    print("Enter first name: ")
+    val firstName = readLine().toString()
+    print("Enter surname: ")
+    val surname = readLine().toString()
+    print("Enter gender (m/f): ")
+    val gender = readLine()!!.toCharArray()[0]
+    print("Enter gross salary: ")
+    val grossSalary = readLine()!!.toDouble()
+    print("Enter PAYE %: ")
+    val payePercentage = readLine()!!.toDouble()
+    print("Enter PRSI %: ")
+    val prsiPercentage = readLine()!!.toDouble()
+    print("Enter Annual Bonus: ")
+    val annualBonus= readLine()!!.toDouble()
+    print("Enter Cycle to Work Deduction: ")
+    val cycleToWorkMonthlyDeduction= readLine()!!.toDouble()
+    print("is this EWmployee a manager. (true/flase) ")
+    val isManager= readLine()!!.toBoolean()
+
+
+    employees.create(Employee(firstName, surname, gender, 0, grossSalary, payePercentage, prsiPercentage, annualBonus, cycleToWorkMonthlyDeduction, isManager))
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /**
  *
  *  Search Employee Menu
@@ -118,10 +158,11 @@ fun runEmployeeSearch () {
     do {
         when (val option = searchMenu()) {
             // 1 -> listByName()
-            // 2 ->  listBySurname()
-            // 3 ->  listByGender()
-            // 4 ->  listOfManagers()
-            // 5 -> sortBySurname()
+            // 2 -> listBySurname()
+            // 3 -> listByGender()
+            // 4 -> listOfManagers()
+            // 5 -> searchById()
+            // 6 -> sortBySurname()
 
 
             0 -> return // Return to main menu
