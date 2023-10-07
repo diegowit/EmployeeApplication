@@ -73,7 +73,7 @@ fun runEmployeeMenu () {
             1 -> add()
            // 2 -> list()
            // 3 -> paySlip()
-           // 4 -> update()
+            4 -> update()
           //  5 -> delete()
 
 
@@ -107,6 +107,19 @@ fun employeeMenu(): Int {
     // Returning the user input as an integer.
 }
 
+internal fun getEmployeeById(): Employee? /* The return type of the method is """Employee?""",
+ which means that it returns an instance of the Employee class or null.
+  The ? symbol in the type declaration indicates that the value can be either
+  an instance of the Employee class or null.*/
+
+{
+    // Prompt the user for the employee id to search by.
+    print("Enter the employee id to search by: ")
+    val employeeID = readLine()!!.toInt()
+
+    // Search for the employee with the specified id and return the result.
+    return employees.findOne(employeeID)
+}
 
 fun add(){
     print("Enter first name: ")
@@ -133,6 +146,45 @@ fun add(){
 }
 
 
+// Function to update an employee's details.
+fun update(){
+    // Call the getEmployeeById() function to get the employee instance.
+    val employee = getEmployeeById()
+    // If the employee is found, update the details.
+    if (employee != null) {
+        // Get the new first name from the user and update the employee instance.
+        println("Enter the new first name: ")
+        employee.firstName = readLine()!!
+
+        // Prompt the user for the new surname and update the employee instance.
+        println("Enter the new surname: ")
+        employee.surname = readLine()!!
+
+        // Prompt the user for the new gender and update the employee instance.
+        println("Enter the new gender (m/f): ")
+        employee.gender = readLine()!![0]
+
+        // Prompt the user for the new gross salary and update the employee instance.
+        println("Enter the new gross salary: ")
+        employee.grossSalary = readLine()!!.toDouble()
+
+        // Prompt the user for the new PAYE percentage and update the employee instance.
+        println("Enter the new PAYE percentage: ")
+        employee.payePercentage = readLine()!!.toDouble()
+
+        // Prompt the user for the new PRSI percentage and update the employee instance.
+        println("Enter the new PRSI percentage: ")
+        employee.prsiPercentage = readLine()!!.toDouble()
+
+        // Prompt the user for the new annual bonus and update the employee instance.
+        println("Enter the new annual bonus: ")
+        employee.annualBonus = readLine()!!.toDouble()
+
+        // Prompt the user for the new cycle to work monthly deduction and update the employee instance.
+        println("Enter the new cycle to work monthly deduction: ")
+        employee.cycleToWorkMonthlyDeduction = readLine()!!.toDouble()
+    }
+}
 
 
 
