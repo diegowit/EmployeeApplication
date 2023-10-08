@@ -333,7 +333,7 @@ fun listByGender() {
 
 fun listManagers() {
     // Get employee grouped by isManager using employeeApi
-    val contactsByLastName = employees.listManagers()
+    val contactsByLastName =  employees.listManagers()
 
     // the results are showed
     if (contactsByLastName.isEmpty()) {
