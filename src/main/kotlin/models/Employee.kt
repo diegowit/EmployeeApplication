@@ -21,22 +21,27 @@ class Employee(var firstName: String, var surname: String, var gender: Char, var
 
     fun getPayslip() =
         """
-        ______________________________________________________________________
-         Monthly Payslip:             ${getFullName()}, ID: $employeeID                  
-        ______________________________________________________________________    
-              PAYMENT DETAILS (gross pay: ${getGrossMonthlyPay()})                                                                    
-        ______________________________________________________________________
-                   Salary: ${getMonthlySalary()}
-                   Bonus:  ${roundTwoDecimals(annualBonus / 12)}            
-        ______________________________________________________________________
-              DEDUCTION DETAILS (total Deductions: ${getTotalMonthlyDeductions()})      
-        ______________________________________________________________________
-                   PAYE: ${getMonthlyPAYE()}                
-                   PRSI: ${getMonthlyPRSI()}  
-                   Cycle To Work: $cycleToWorkMonthlyDeduction         
-        ______________________________________________________________________
-             NET PAY: ${getNetMonthlyPay()} 
-        ______________________________________________________________________"""
+    ╔════════════════════════════════════════════════════════════════════════╗
+    ║                            Monthly Payslip                             ║
+    ║ Employee: ${getFullName()} ID: $employeeID                             ║
+    ╠════════════════════════════════════════════════════════════════════════╣
+    ║                          PAYMENT DETAILS                               ║
+    ║ Gross Pay: ${String.format("%,.2f", getGrossMonthlyPay())}             ║
+    ╟────────────────────────────────────────────────────────────────────────╢
+    ║ Salary:    ${String.format("%,.2f", getMonthlySalary())}                       ║
+    ║ Bonus:     ${String.format("%,.2f", roundTwoDecimals(annualBonus / 12))}║
+    ╠════════════════════════════════════════════════════════════════════════ ╣
+    ║                         DEDUCTION DETAILS                               ║
+    ║ Total Deductions: ${String.format("%,.2f", getTotalMonthlyDeductions())}║
+    ╟─────────────────────────────────────────────────────────────────────────╢
+    ║ PAYE:      ${String.format("%,.2f", getMonthlyPAYE())}                  ║
+    ║ PRSI:      ${String.format("%,.2f", getMonthlyPRSI())}                  ║
+    ║ Cycle To Work: ${String.format("%,.2f", cycleToWorkMonthlyDeduction)}   ║
+    ╠════════════════════════════════════════════════════════════════════════ ╣
+    ║ Net Pay: ${String.format("%,.2f", getNetMonthlyPay())}                  ║
+    ╚════════════════════════════════════════════════════════════════════════ ╝
+""".trimIndent()
+
 
     override fun toString(): String {
         return "Employee(firstName='$firstName', surname='$surname', gender=$gender, employeeID=$employeeID, grossSalary=$grossSalary, payePercentage=$payePercentage, prsiPercentage=$prsiPercentage, annualBonus=$annualBonus, cycleToWorkMonthlyDeduction=$cycleToWorkMonthlyDeduction, isManager=$isManager)"

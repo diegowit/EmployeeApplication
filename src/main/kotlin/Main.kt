@@ -50,13 +50,13 @@ fun mainMenu(): Int {
 ╠═══════════════════════════════════════════════════╣
 ║                                                   ║
 ║                  1 Employee Menu                  ║
-║                  2 Search  Employee Menu           ║
+║                  2 Search  Employee Menu          ║
 ╚═══════════════════════════════════════════════════╝
 ║                  0    Exit                        ║
 ╚═══════════════════════════════════════════════════╝
 ==>> """.trimMargin()
     )
-    return readLine()!!.toInt()
+    return readln().toInt()
     // Returning the user input as an integer.
 }
 
@@ -74,6 +74,8 @@ fun runEmployeeMenu () {
             2 -> list()
             3 -> paySlip()
             4 -> update()
+            5 -> delete()
+            80 -> dummyData()
           //  5 -> delete()
 
 
@@ -103,7 +105,7 @@ fun employeeMenu(): Int {
             
        ==>> """.trimMargin()
     )
-    return readLine()!!.toInt()
+    return readln().toInt()
     // Returning the user input as an integer.
 }
 
@@ -115,7 +117,7 @@ internal fun getEmployeeById(): Employee? /* The return type of the method is ""
 {
     // Prompt the user for the employee id to search by.
     print("Enter the employee id to search by: ")
-    val employeeID = readLine()!!.toInt()
+    val employeeID = readln().toInt()
 
     // Search for the employee with the specified id and return the result.
     return employees.findOne(employeeID)
@@ -123,23 +125,23 @@ internal fun getEmployeeById(): Employee? /* The return type of the method is ""
 
 fun add(){
     print("Enter first name: ")
-    val firstName = readLine().toString()
+    val firstName = readlnOrNull().toString()
     print("Enter surname: ")
-    val surname = readLine().toString()
+    val surname = readlnOrNull().toString()
     print("Enter gender (m/f): ")
-    val gender = readLine()!!.toCharArray()[0]
+    val gender = readln().toCharArray()[0]
     print("Enter gross salary: ")
-    val grossSalary = readLine()!!.toDouble()
+    val grossSalary = readln().toDouble()
     print("Enter PAYE %: ")
-    val payePercentage = readLine()!!.toDouble()
+    val payePercentage = readln().toDouble()
     print("Enter PRSI %: ")
-    val prsiPercentage = readLine()!!.toDouble()
+    val prsiPercentage = readln().toDouble()
     print("Enter Annual Bonus: ")
-    val annualBonus= readLine()!!.toDouble()
+    val annualBonus= readln().toDouble()
     print("Enter Cycle to Work Deduction: ")
-    val cycleToWorkMonthlyDeduction= readLine()!!.toDouble()
-    print("is this EWmployee a manager. (true/flase) ")
-    val isManager= readLine()!!.toBoolean()
+    val cycleToWorkMonthlyDeduction= readln().toDouble()
+    print("is this EWmployee a manager. (true/false) ")
+    val isManager= readln().toBoolean()
 
 
     employees.create(Employee(firstName, surname, gender, 0, grossSalary, payePercentage, prsiPercentage, annualBonus, cycleToWorkMonthlyDeduction, isManager))
@@ -154,38 +156,38 @@ fun update(){
     if (employee != null) {
         // Get the new first name from the user and update the employee instance.
         println("Enter the new first name: ")
-        employee.firstName = readLine()!!
+        employee.firstName = readln()
 
         // Prompt the user for the new surname and update the employee instance.
         println("Enter the new surname: ")
-        employee.surname = readLine()!!
+        employee.surname = readln()
 
         // Prompt the user for the new gender and update the employee instance.
         println("Enter the new gender (m/f): ")
-        employee.gender = readLine()!![0]
+        employee.gender = readln()[0]
 
         // Prompt the user for the new gross salary and update the employee instance.
         println("Enter the new gross salary: ")
-        employee.grossSalary = readLine()!!.toDouble()
+        employee.grossSalary = readln().toDouble()
 
         // Prompt the user for the new PAYE percentage and update the employee instance.
         println("Enter the new PAYE percentage: ")
-        employee.payePercentage = readLine()!!.toDouble()
+        employee.payePercentage = readln().toDouble()
 
         // Prompt the user for the new PRSI percentage and update the employee instance.
         println("Enter the new PRSI percentage: ")
-        employee.prsiPercentage = readLine()!!.toDouble()
+        employee.prsiPercentage = readln().toDouble()
 
         // Prompt the user for the new annual bonus and update the employee instance.
         println("Enter the new annual bonus: ")
-        employee.annualBonus = readLine()!!.toDouble()
+        employee.annualBonus = readln().toDouble()
 
         // Prompt the user for the new cycle to work monthly deduction and update the employee instance.
         println("Enter the new cycle to work monthly deduction: ")
-        employee.cycleToWorkMonthlyDeduction = readLine()!!.toDouble()
+        employee.cycleToWorkMonthlyDeduction = readln().toDouble()
 
         println("is a Manager (true/false): ")
-        employee.isManager = readLine()!!.toBoolean()
+        employee.isManager = readln().toBoolean()
 
 val updatedEmployee = Employee( employee.firstName,
     employee.surname, employee.gender,
@@ -230,31 +232,49 @@ fun list(){
 }
 
 
+fun dummyData() {
+    employees.create(Employee("Yessi", "Paul", 'f', 0, 3625.43, 81.0, 8.0, 3000.0, 20.6, true))
+    employees.create(Employee("John", "Lopez", 'm', 0, 969955.13, 12.5, 6.5, 1200.0, 45.3, false))
+    employees.create(Employee("Laura", "Smith", 'f', 0, 457825.41, 10.0, 9.9, 6500.0, 0.0, true))
+}
 
+fun delete() {
+    val employee = getEmployeeById()
 
+    if (employee != null) {
+        val deleted = employees.deleteEmployee(employee.employeeID)
+
+        if (deleted) {
+            println("deleted successfully")
+        } else {
+            println("Failed to delete")
+        }
+    } else {
+        println("Employee not found.")
+    }
+}
 
 /**
  *
  *  Search Employee Menu
  *
  */
+
 fun runEmployeeSearch () {
 
     do {
         when (val option = searchMenu()) {
-            // 1 -> listByName()
-            // 2 -> listBySurname()
-            // 3 -> listByGender()
-            // 4 -> listOfManagers()
-            // 5 -> searchById()
-            // 6 -> sortBySurname()
-
+             1 -> listBySurname()
+             2 -> listByGender()
+             3 -> listManagers()
 
             0 -> return // Return to main menu
             else -> println("Invalid menu choice: $option")
         }
     } while (true)
 }
+
+
 
 fun searchMenu(): Int {
 
@@ -263,11 +283,11 @@ fun searchMenu(): Int {
 ╔═══════════════════════════════════════════════════╗
 ║                   Employee Menu                   ║
 ╠═══════════════════════════════════════════════════╣
-║   1) List Employee By Name                        ║
-║   2) List Employee By Surname                     ║
-║   3) list Employee by Gender                      ║
-║   4) list Managers                                ║
-║   5) Sort Employee By surname in ascending order  ║
+║   1) List Employee By Surname                     ║
+║   2) List Employee By Gender                      ║
+║   3) list Managers                                ║
+║                                                   ║
+║                                                   ║
 ║                                                   ║
 ╚═══════════════════════════════════════════════════╝
 ║   0) Return to Main Menu                          ║
@@ -276,9 +296,57 @@ fun searchMenu(): Int {
             
        ==>> """.trimMargin()
     )
-    return readLine()!!.toInt()
+    return readln().toInt()
     // Returning the user input as an integer.
 }
+
+
+
+
+fun listBySurname() {
+    // Get employee grouped by Surname using employeeApi
+    val contactsBySurname = employees.listBySurname()
+
+    // the results are showed
+    if (contactsBySurname.isEmpty()) {
+        println("No employees found")
+    } else {
+        println("Listing employees by Surname:")
+        contactsBySurname.forEach{ println(it) }
+    }
+}
+
+
+fun listByGender() {
+    // Get employees grouped by Gender using employeeApi
+    val contactsByLastName = employees.listByGender()
+
+    // the results are showed
+    if (contactsByLastName.isEmpty()) {
+        println("No employees found")
+    } else {
+        println("Listing employees by Gender:")
+        contactsByLastName.forEach{ println(it) }
+    }
+}
+
+
+fun listManagers() {
+    // Get employee grouped by isManager using employeeApi
+    val contactsByLastName =  employees.listManagers()
+
+    // the results are showed
+    if (contactsByLastName.isEmpty()) {
+        println("No employees found")
+    } else {
+        println("Listing Manager employees :")
+        contactsByLastName.forEach{ println(it) }
+    }
+}
+
+
+
+
 
 
 fun exitApp() {
